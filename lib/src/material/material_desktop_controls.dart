@@ -293,16 +293,16 @@ class _MaterialDesktopControlsState extends State<MaterialDesktopControls> with 
       child: AnimatedOpacity(
         opacity: notifier.hideStuff ? 0.0 : 1.0,
         duration: const Duration(milliseconds: 300),
-        child: Container(
-          height: barHeight + (chewieController.isFullScreen ? 15.0 : 0),
-          margin: const EdgeInsets.only(right: 12.0),
-          padding: const EdgeInsets.only(
-            left: 8.0,
-            right: 8.0,
-          ),
-          child: Center(
-            child: InkWell(
-              onTap: chewieController.onFlTap,
+        child: InkWell(
+          onTap: chewieController.onFlTap,
+          child: Container(
+            height: barHeight + (chewieController.isFullScreen ? 15.0 : 0),
+            margin: const EdgeInsets.only(right: 12.0),
+            padding: const EdgeInsets.only(
+              left: 8.0,
+              right: 8.0,
+            ),
+            child: Center(
               child: Icon(
                 chewieController.isFullScreen ? Icons.fullscreen_exit : Icons.fullscreen,
                 color: Colors.white,
