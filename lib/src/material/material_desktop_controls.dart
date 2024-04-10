@@ -304,7 +304,7 @@ class _MaterialDesktopControlsState extends State<MaterialDesktopControls> with 
             child: InkWell(
               onTap: chewieController.onFlTap,
               child: Icon(
-                chewieController.isFullScreen ? Icons.fullscreen_exit : Icons.abc,
+                chewieController.isFullScreen ? Icons.fullscreen_exit : Icons.fullscreen,
                 color: Colors.white,
               ),
             ),
