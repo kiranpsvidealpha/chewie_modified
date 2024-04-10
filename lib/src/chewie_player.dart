@@ -1,7 +1,4 @@
-// ignore_for_file: avoid_web_libraries_in_flutter
-
 import 'dart:async';
-import 'dart:html' as html;
 
 import 'package:chewie/src/chewie_progress_colors.dart';
 import 'package:chewie/src/models/option_item.dart';
@@ -291,6 +288,7 @@ class ChewieController extends ChangeNotifier {
     this.subtitleBuilder,
     this.customControls,
     this.errorBuilder,
+    this.onFlTap,
     this.allowedScreenSleep = true,
     this.isLive = false,
     this.allowFullScreen = true,
@@ -321,6 +319,7 @@ class ChewieController extends ChangeNotifier {
     bool? autoPlay,
     bool? draggableProgressBar,
     Duration? startAt,
+    Function()? onFlTap,
     bool? looping,
     bool? fullScreenByDefault,
     ChewieProgressColors? cupertinoProgressColors,
@@ -361,6 +360,7 @@ class ChewieController extends ChangeNotifier {
     )? routePageBuilder,
   }) {
     return ChewieController(
+      onFlTap: onFlTap ?? this.onFlTap,
       draggableProgressBar: draggableProgressBar ?? this.draggableProgressBar,
       videoPlayerController: videoPlayerController ?? this.videoPlayerController,
       optionsTranslation: optionsTranslation ?? this.optionsTranslation,
@@ -502,6 +502,9 @@ class ChewieController extends ChangeNotifier {
   /// Defines if the player will sleep in fullscreen or not
   final bool allowedScreenSleep;
 
+  /// Defines if the player will sleep in fullscreen or not
+  final void Function()? onFlTap;
+
   /// Defines if the controls should be shown for live stream video
   final bool isLive;
 
@@ -590,15 +593,11 @@ class ChewieController extends ChangeNotifier {
 
   void enterFullScreen() {
     _isFullScreen = true;
-    html.document.documentElement!.requestFullscreen();
-    html.document.documentElement!.style.overflow = 'hidden';
     notifyListeners();
   }
 
   void exitFullScreen() {
     _isFullScreen = false;
-    html.document.exitFullscreen();
-    html.document.documentElement!.style.overflow = '';
     notifyListeners();
   }
 
