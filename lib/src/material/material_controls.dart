@@ -342,12 +342,9 @@ class _MaterialControlsState extends State<MaterialControls> with SingleTickerPr
             right: 8.0,
           ),
           child: Center(
-            child: InkWell(
-              onTap: chewieController.onFlTap,
-              child: Icon(
-                chewieController.isFullScreen ? Icons.fullscreen_exit : Icons.fullscreen,
-                color: Colors.white,
-              ),
+            child: Icon(
+              chewieController.isFullScreen ? Icons.fullscreen_exit : Icons.fullscreen,
+              color: Colors.white,
             ),
           ),
         ),
